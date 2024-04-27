@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="registro.css">
+    <style>
+        .mensagem-sucesso {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="bancodados.php" method="POST">
+    <div class="container">
+        <h2>Cadastro</h2>
+       
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="dataNascimento">Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" required>
+            <label for="profissao">Profissão:</label>
+            <input type="text" id="profissao" name="profissao" required> <!-- Alterei para campo de texto, você pode mudar para um select se preferir -->
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <label for="confirmarSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+            <input type="submit" value="Cadastrar">
+        </form>
+        <div class="mensagem-sucesso" id="mensagemSucesso">Cadastro realizado com sucesso!</div>
+        <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+    </div>
+
+    <script>
+        function validarForm() {
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var nascimento = document.getElementById('dataNascimento').value;
+            var profissao = document.getElementById('profissao').value;
+            var senha = document.getElementById('senha').value;
+            var confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (nome === '' || email === '' || dataNascimento === '' || profissao === '' || senha === '' || confirmarSenha === '') {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false; // Impede o envio do formulário
+            }
+
+            if (senha !== confirmarSenha) {
+                alert('As senhas digitadas não coincidem.');
+                return false; // Impede o envio do formulário
+            }
+
+            // Exibe a mensagem de sucesso
+            var mensagemSucesso = document.getElementById('mensagemSucesso');
+            mensagemSucesso.style.display = 'block';
+
+             //Impede o envio do formulário
+            
+             return false;
+        }
+    </script>
+</body>
+</html>
